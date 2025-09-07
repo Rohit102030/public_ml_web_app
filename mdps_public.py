@@ -134,20 +134,28 @@ if (selected == 'Heart Disease Prediction'):
         thal = st.text_input('thal: 0 = normal; 1 = fixed defect; 2 = reversable defect')
         
         
-     
-     
     # code for Prediction
     heart_diagnosis = ''
     
     # creating a button for Prediction
-    
     if st.button('Heart Disease Test Result'):
-        heart_prediction = heart_disease_model.predict([[age, sex, cp, trestbps, chol, fbs, restecg,thalach,exang,oldpeak,slope,ca,thal]])                          
+        try:
+            # Convert all inputs to correct numeric types
+            user_input = [
+                int(age), int(sex), int(cp), int(trestbps), int(chol),
+                int(fbs), int(restecg), int(thalach), int(exang),
+                float(oldpeak), int(slope), int(ca), int(thal)
+            ]
+            
+            heart_prediction = heart_disease_model.predict([user_input])                          
         
-        if (heart_prediction[0] == 1):
-          heart_diagnosis = 'The person is having heart disease'
-        else:
-          heart_diagnosis = 'The person does not have any heart disease'
+            if (heart_prediction[0] == 1):
+                heart_diagnosis = 'The person is having heart disease'
+            else:
+                heart_diagnosis = 'The person does not have any heart disease'
+        
+        except ValueError:
+            heart_diagnosis = "⚠ Please enter valid numeric values for all fields."
         
     st.success(heart_diagnosis)
         
@@ -287,3 +295,4 @@ def set_bg_from_url(url, opacity=1):
 
 # Set background image from URL
 set_bg_from_url("https://images.everydayhealth.com/homepage/health-topics-2.jpg?w=768", opacity=0.975)
+
