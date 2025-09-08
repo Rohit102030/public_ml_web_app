@@ -296,7 +296,8 @@ def set_bg_from_url(url, opacity=1):
     )
 
 # Set background image from URL
-set_bg_from_url("https://images.everydayhealth.com/homepage/health-topics-2.jpg?w=768", opacity=0.975)
+set_bg_from_url("https://www.nm.org/healthbeat/healthy-tips/Understanding-and-Navigating-Multiple-Sclerosis", opacity=0.975)
+
 
 
 
