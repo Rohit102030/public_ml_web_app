@@ -306,7 +306,8 @@ def set_bg_from_url(url=None, opacity=1):
 
 # Example usage
 set_bg_from_url(None)  # Just black background
-set_bg_from_url("https://images.everydayhealth.com/homepage/health-topics-2.jpg?w=768", opacity=0.975)  # Black + image
+# set_bg_from_url("https://images.everydayhealth.com/homepage/health-topics-2.jpg?w=768", opacity=0.975)  # Black + image
+
 
 
 
