@@ -252,12 +252,13 @@ if (selected == "Parkinsons Prediction"):
         
     st.success(parkinsons_diagnosis)
 
-def set_bg_from_url(url=None, opacity=1):
+def set_bg_from_url(url, opacity=1):
+    
     footer = """
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <footer>
         <div style='visibility: visible;margin-top:7rem;justify-content:center;display:flex;'>
-            <p style="font-size:1.1rem; color:white;">
+            <p style="font-size:1.1rem;">
                 Made by Rohit Kumar
                 &nbsp;
                 <a href="https://www.linkedin.com/in/mohamedshaad">
@@ -276,37 +277,26 @@ def set_bg_from_url(url=None, opacity=1):
     </footer>
 """
     st.markdown(footer, unsafe_allow_html=True)
+    
+    
+    # Set background image using HTML and CSS
+    st.markdown(
+        f"""
+        <style>
+            body {{
+                background: url('{url}') no-repeat center center fixed;
+                background-size: cover;
+                opacity: {opacity};
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-    # Set black background (with or without image)
-    if url:
-        st.markdown(
-            f"""
-            <style>
-                body {{
-                    background-color: black;
-                    background: url('{url}') no-repeat center center fixed;
-                    background-size: cover;
-                    opacity: {opacity};
-                }}
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
-    else:
-        st.markdown(
-            """
-            <style>
-                body {
-                    background-color: black;
-                }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
+# Set background image from URL
+set_bg_from_url("https://images.everydayhealth.com/homepage/health-topics-2.jpg?w=768", opacity=0.975)
 
-# Example usage
-set_bg_from_url(None)  # Just black background
-# set_bg_from_url("https://images.everydayhealth.com/homepage/health-topics-2.jpg?w=768", opacity=0.975)  # Black + image
+
 
 
 
